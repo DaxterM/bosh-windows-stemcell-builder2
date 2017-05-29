@@ -2,6 +2,7 @@ require 'tempfile'
 require 'json'
 require 'English'
 require 'open3'
++ENV['PACKER_LOG'] = '1'
 
 module Packer
   class Runner
@@ -22,7 +23,8 @@ module Packer
         args_combined += "-var \"#{name}=#{value}\""
       end
 
-      packer_command = "packer #{command} -machine-readable #{args_combined} #{config_file.path}"
+     
+      packer_command = "packer #{command} -machine-readable #{args_combined} -on-error=abort #{config_file.path}"
 
       Open3.popen2e(packer_command) do |stdin, out, wait_thr|
         yield(out) if block_given?
