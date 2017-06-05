@@ -39,7 +39,7 @@ function Wait-WindowsUpdates {
 }
 
 function Install-WindowsUpdates {
-
+    netsh winhttp set proxy proxy-server="http=proxy.inbcu.com:80;https=proxy.inbcu.com:80" bypass-list="*.inbcu.com"
     $script:UpdateSession = New-Object -ComObject 'Microsoft.Update.Session'
     $script:UpdateSession.ClientApplicationID = 'BOSH.WindowsUpdates'
     $script:UpdateSearcher = $script:UpdateSession.CreateUpdateSearcher()
