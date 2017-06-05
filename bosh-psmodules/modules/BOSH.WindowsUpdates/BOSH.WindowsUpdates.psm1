@@ -110,6 +110,7 @@ function Invoke-RebootOrComplete() {
 }
 
 function Install-UpdateBatch() {
+    netsh winhttp set proxy proxy-server="http=proxy.inbcu.com:80;https=proxy.inbcu.com:80" bypass-list="*.inbcu.com"
     $script:Cycles++
     Write-Log "Evaluating Available Updates with limit of $($script:MaxUpdatesPerCycle):"
     $UpdatesToDownload = New-Object -ComObject 'Microsoft.Update.UpdateColl'
