@@ -75,7 +75,7 @@ module Packer
       def self.lgpo_exe
         {
           'type' => 'file',
-          'source' => File.join(Stemcell::Builder::validate_env_dir('STEMCELL_DEPS_DIR'), 'lgpo', 'LGPO.exe'),
+          'source' => 'C:\\windows\\LGPO.exe',
           'destination' => 'C:\\windows\\LGPO.exe'
         }.freeze
       end
